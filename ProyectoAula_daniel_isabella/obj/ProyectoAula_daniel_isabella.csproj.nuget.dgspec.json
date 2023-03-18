@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ISABELLA\\source\\repos\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella.csproj": {}
+    "C:\\Users\\ISABELLA\\Documents\\ProyectoCD\\Proyecto.codigolimpio\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ISABELLA\\source\\repos\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella.csproj": {
+    "C:\\Users\\ISABELLA\\Documents\\ProyectoCD\\Proyecto.codigolimpio\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ISABELLA\\source\\repos\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella.csproj",
+        "projectUniqueName": "C:\\Users\\ISABELLA\\Documents\\ProyectoCD\\Proyecto.codigolimpio\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella.csproj",
         "projectName": "ProyectoAula_daniel_isabella",
-        "projectPath": "C:\\Users\\ISABELLA\\source\\repos\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella.csproj",
+        "projectPath": "C:\\Users\\ISABELLA\\Documents\\ProyectoCD\\Proyecto.codigolimpio\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella.csproj",
         "packagesPath": "C:\\Users\\ISABELLA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ISABELLA\\source\\repos\\ProyectoAula_daniel_isabella\\ProyectoAula_daniel_isabella\\obj\\",
+        "outputPath": "C:\\Users\\ISABELLA\\Documents\\ProyectoCD\\Proyecto.codigolimpio\\ProyectoAula_daniel_isabella\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ISABELLA\\AppData\\Roaming\\NuGet\\NuGet.Config",
