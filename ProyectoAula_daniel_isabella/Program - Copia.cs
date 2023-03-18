@@ -62,6 +62,7 @@ namespace ProyectoAula_daniel_isabella
                         Console.WriteLine("el porcentaje de los ancianos es {0}:", lista_edades[5]);
                         Console.WriteLine("el porcentaje de las personas que poseen el cancer es", total_cancer(listaPersonas));
                         Console.WriteLine(lista_edades);
+                        Console.WriteLine(PorcentajeRegimen(listaPersonas));
                         
                        
 
@@ -483,11 +484,33 @@ namespace ProyectoAula_daniel_isabella
 
             }
 
+            static List<double> PorcentajeRegimen(List<Paciente> listaspersonas)
+            {
+                double porcentaje_contributivo = 0;
+                double porcentaje_subsidiado = 0;
+                int total_contributivo = 0;
+                int total_subsidiado = 0;
+                int total_personas = 0;
+
+                total_personas = listaspersonas.Count;
+
+                foreach (Paciente paciente in listaspersonas)
+                {
+                    if (paciente.Tipo_regimen1 == 1)
+                    {
+                        total_contributivo += 1;
+                    }
+                    else if (paciente.Tipo_regimen1 == 2)
+                    {
+                        total_subsidiado += 1;
+                    }
+                }
 
 
 
-
-
+                List<double> list_regimen = new List<double>() { porcentaje_contributivo, porcentaje_subsidiado, };
+                return list_regimen;
+            }
 
         }
 
