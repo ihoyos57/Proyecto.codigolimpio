@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoCL;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoAula_daniel_isabella
 {
+    using ProyectoCL;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -21,7 +23,11 @@ namespace ProyectoAula_daniel_isabella
         {
             static void Main()
             {
-                List<Paciente> listaPersonas = new List<Paciente>();
+                List<Persona> listaPersonas = new List<Persona>();
+                List<EPS> listaeps = new List<EPS>();
+                List<Afiliacion> listafiliacion = new List<Afiliacion>();
+                List<HistoriaClinica> listaHistoriaClinica = new List<HistoriaClinica>();
+                List<CostosTratamientos> listaCostosTratamientos = new List<CostosTratamientos>();
                 while (true)
                 {
                     Console.WriteLine("Seleccione la opción que desea: ");
@@ -31,7 +37,12 @@ namespace ProyectoAula_daniel_isabella
 
                     if (opcion == 0)
                     {
-                        listaPersonas.Add(Crear_paciente());
+                        listaPersonas.Add(Crear_Persona());
+                        listaeps.Add(Crear_Eps());
+                        listafiliacion.Add(Crear_afiliacion());
+                        listaHistoriaClinica.Add(Crear_Historiaclinica());
+                        listaCostosTratamientos.Add(Crear_costos());
+
                         while (true)
                         {
                             // Preguntar si se desea agregar otro paciente
@@ -40,7 +51,11 @@ namespace ProyectoAula_daniel_isabella
 
                             if (respuesta == "s")
                             {
-                                listaPersonas.Add(Crear_paciente());
+                                listaPersonas.Add(Crear_Persona());
+                                listaeps.Add(Crear_Eps());
+                                listafiliacion.Add(Crear_afiliacion());
+                                listaHistoriaClinica.Add(Crear_Historiaclinica());
+                                listaCostosTratamientos.Add(Crear_costos());
                             }
                             else
                             {
@@ -50,7 +65,7 @@ namespace ProyectoAula_daniel_isabella
 
                     }
                     else if (opcion == 1)
-                    {
+                    {/*
                         Console.WriteLine("El costo total por cada eps es {0} ", total_costos_por_eps(listaPersonas));
                         Console.WriteLine("El porcentaje de costos por la eps selecionada es {0}", porcentaje_costos_por_eps(listaPersonas));
                         List<double> lista_edades = CalcularEdades(listaPersonas);
@@ -63,13 +78,14 @@ namespace ProyectoAula_daniel_isabella
                         Console.WriteLine("el porcentaje de las personas que poseen el cancer es", total_cancer(listaPersonas));
                         Console.WriteLine(lista_edades);
                         Console.WriteLine(PorcentajeRegimen(listaPersonas));
-                        
-                       
+                        */
+
 
                     }
                     else if (opcion == 2)
-                    {
+                    {/*
                         cambiar_eps(listaPersonas);
+                        */
                     }
                     else
                     {
@@ -80,24 +96,12 @@ namespace ProyectoAula_daniel_isabella
 
             }
 
-            private static Paciente Crear_paciente()
+            private static Persona Crear_Persona()
             {
-
-                // Pedir los datos de la persona
+                string nombres = "";
+                string apellidos = "";
+                DateTime FechaNacimiento = DateTime.MinValue;
                 int identificacion = 0;
-                string nombre = "";
-                string apellido = "";
-                DateTime nacimiento = DateTime.MinValue;
-                int tipo_regimen = 0;
-                int semanas_cotizadas = 0;
-                DateTime ingreso_sistema_salud = DateTime.MinValue;
-                DateTime ingreso_eps = DateTime.MinValue;
-                int eps = 0;
-                string historia_clinica = "";
-                int cantidad_enfermedades = 0;
-                string enfermedad_mas_relevante = "";
-                int tipo_afiliacion = 0;
-                int costos_tratamientos = 0;
 
                 while (identificacion == 0)
                 {
@@ -112,12 +116,12 @@ namespace ProyectoAula_daniel_isabella
                     }
                 }
 
-                while (nombre == "")
+                while (nombres == "")
                 {
                     try
                     {
                         Console.WriteLine("Ingrese el nombre:");
-                        nombre = Console.ReadLine();
+                        nombres = Console.ReadLine();
                     }
                     catch (Exception a)
                     {
@@ -125,12 +129,12 @@ namespace ProyectoAula_daniel_isabella
                     }
                 }
 
-                while (apellido == "")
+                while (apellidos == "")
                 {
                     try
                     {
                         Console.WriteLine("Ingrese el apellido:");
-                        apellido = Console.ReadLine();
+                        apellidos = Console.ReadLine();
                     }
                     catch (Exception a)
                     {
@@ -138,12 +142,96 @@ namespace ProyectoAula_daniel_isabella
                     }
                 }
 
-                while (nacimiento == DateTime.MinValue)
+                while (FechaNacimiento == DateTime.MinValue)
                 {
                     try
                     {
                         Console.WriteLine("Ingrese la fecha de nacimiento (dd/mm/aaaa):");
-                        nacimiento = Convert.ToDateTime(Console.ReadLine());
+                        FechaNacimiento = Convert.ToDateTime(Console.ReadLine());
+                    }
+                    catch (Exception a)
+                    {
+                        Console.WriteLine("Error: " + a.Message);
+                    }
+                }
+                Persona nuevaPersona = new Persona(nombres, apellidos,
+                    FechaNacimiento, identificacion);
+
+                return nuevaPersona;
+
+            }
+
+            private static EPS Crear_Eps()
+            {
+                DateTime ingreso_sistema_salud = DateTime.MinValue;
+                DateTime ingreso_eps = DateTime.MinValue;
+                int nombre_eps = 0;
+
+                while (nombre_eps == 0)
+                {
+                    try
+                    {
+                        Console.WriteLine("Ingrese el tipo de eps (1: Sura, 2: Nueva eps, 3: salud total, 4: sanitas, 5: savia):");
+                        nombre_eps = Convert.ToInt32(Console.ReadLine());
+                        if (nombre_eps < 1 & nombre_eps > 5)
+                        {
+                            throw new Exception("El valor ingresado debe estar entre 1 y 5");
+                        }
+                    }
+                    catch (Exception a)
+                    {
+                        Console.WriteLine("Error: " + a.Message);
+                    }
+                }
+                while (ingreso_sistema_salud == DateTime.MinValue)
+                {
+                    try
+                    {
+                        Console.WriteLine("Ingrese la fecha de ingreso al sistema de salud (dd/mm/aaaa):");
+                        ingreso_sistema_salud = Convert.ToDateTime(Console.ReadLine());
+                    }
+                    catch (Exception a)
+                    {
+
+                        Console.WriteLine("Error: " + a.Message);
+                    }
+                }
+                while (ingreso_eps == DateTime.MinValue)
+                {
+                    try
+                    {
+                        Console.WriteLine("Ingrese la fecha de ingreso a la eps (dd/mm/aaaa):");
+                        ingreso_eps = Convert.ToDateTime(Console.ReadLine());
+                    }
+                    catch (Exception a)
+                    {
+
+                        Console.WriteLine("Error: " + a.Message);
+                    }
+                }
+
+                EPS nuevoPacienteEps = new EPS(ingreso_sistema_salud,
+                ingreso_eps, nombre_eps);
+
+                return nuevoPacienteEps;
+
+            }
+            private static Afiliacion Crear_afiliacion()
+            {
+                int tipo_regimen = 0;
+                int semanas_cotizadas = 0;
+                int tipo_afiliacion = 0;
+
+                while (tipo_regimen == 0)
+                {
+                    try
+                    {
+                        Console.WriteLine("Ingrese el tipo de afiliacion (1: Contributivo, 2: Subsidiado):");
+                        tipo_regimen = Convert.ToInt32(Console.ReadLine());
+                        if (tipo_regimen < 1 || tipo_regimen > 2)
+                        {
+                            throw new Exception("El valor ingresado debe ser 1 o 2");
+                        }
                     }
                     catch (Exception a)
                     {
@@ -166,41 +254,6 @@ namespace ProyectoAula_daniel_isabella
                         Console.WriteLine("Error: " + a.Message);
                     }
                 }
-
-                while (tipo_regimen == 0)
-                {
-                    try
-                    {
-                        Console.WriteLine("Ingrese el tipo de régimen (1: Contributivo, 2: Subsidiado):");
-                        tipo_regimen = Convert.ToInt32(Console.ReadLine());
-                        if (tipo_regimen < 1 || tipo_regimen > 2)
-                        {
-                            throw new Exception("El valor ingresado debe ser 1 o 2");
-                        }
-                    }
-                    catch (Exception a)
-                    {
-                        Console.WriteLine("Error: " + a.Message);
-                    }
-                }
-
-                while (eps == 0)
-                {
-                    try
-                    {
-                        Console.WriteLine("Ingrese el tipo de eps (1: Sura, 2: Nueva eps, 3: salud total, 4: sanitas, 5: savia):");
-                        eps = Convert.ToInt32(Console.ReadLine());
-                        if (eps < 1 & eps > 5)
-                        {
-                            throw new Exception("El valor ingresado debe estar entre 1 y 5");
-                        }
-                    }
-                    catch (Exception a)
-                    {
-                        Console.WriteLine("Error: " + a.Message);
-                    }
-                }
-
                 while (semanas_cotizadas == 0)
                 {
                     try
@@ -213,20 +266,15 @@ namespace ProyectoAula_daniel_isabella
                         Console.WriteLine("Error: " + a.Message);
                     }
                 }
+                Afiliacion nuevoPacienteAfiliado = new Afiliacion(tipo_regimen, semanas_cotizadas, tipo_afiliacion);
 
-                while (ingreso_sistema_salud == DateTime.MinValue)
-                {
-                    try
-                    {
-                        Console.WriteLine("Ingrese la fecha de ingreso al sistema de salud (dd/mm/aaaa):");
-                        ingreso_sistema_salud = Convert.ToDateTime(Console.ReadLine());
-                    }
-                    catch (Exception a)
-                    {
-
-                        Console.WriteLine("Error: " + a.Message);
-                    }
-                }
+                return nuevoPacienteAfiliado;
+            }
+            private static HistoriaClinica Crear_Historiaclinica()
+            {
+                string historia_clinica = "";
+                int cantidad_enfermedades = 0;
+                string enfermedad_mas_relevante = "";
 
                 while (cantidad_enfermedades == 0)
                 {
@@ -278,15 +326,23 @@ namespace ProyectoAula_daniel_isabella
                     {
                         Console.WriteLine("Error: " + e.Message);
                     }
-                } while (historia_clinica == "") ;
+                }
+                HistoriaClinica nuevaHistoria = new HistoriaClinica(cantidad_enfermedades,
+                    enfermedad_mas_relevante, historia_clinica);
 
-                while (costos_tratamientos <= 0)
+                return nuevaHistoria;
+            }
+
+            private static CostosTratamientos Crear_costos()
+            {
+                int costosAsociados = 0;
+                while (costosAsociados <= 0)
                 {
                     try
                     {
                         Console.WriteLine("Ingrese los costos de tratamientos:");
-                        costos_tratamientos = Convert.ToInt32(Console.ReadLine());
-                        if (costos_tratamientos <= 0)
+                        costosAsociados = Convert.ToInt32(Console.ReadLine());
+                        if (costosAsociados <= 0)
                         {
                             throw new Exception("El valor ingresado debe ser mayor que cero");
                         }
@@ -296,14 +352,24 @@ namespace ProyectoAula_daniel_isabella
                         Console.WriteLine("Error: " + e.Message);
                     }
                 }
+                CostosTratamientos nuevoscostos = new CostosTratamientos(costosAsociados);
 
-                Paciente nuevoPaciente = new Paciente(identificacion, nombre, apellido,
-                    nacimiento, tipo_regimen, semanas_cotizadas, ingreso_sistema_salud,
-                    ingreso_eps, eps, historia_clinica, cantidad_enfermedades,
-                    enfermedad_mas_relevante, tipo_afiliacion, costos_tratamientos);
-
-                return nuevoPaciente;
+                return nuevoscostos;
             }
+        }
+    }
+}
+            /*
+            private static int total_costos_por_eps(List<CostosTratamientos> listaCostosTratamientos)
+            {
+                int suma = 0;
+                foreach (CostosTratamientos i in listaCostosTratamientos)
+                {
+                    suma += i.;
+                }
+                return suma;
+            }
+        
             private static int total_costos_por_eps(List<Paciente> listapersonas)
             {
                 int suma = 0;
@@ -516,8 +582,7 @@ namespace ProyectoAula_daniel_isabella
 
     }
 }
-
-
+        */
 
 
 

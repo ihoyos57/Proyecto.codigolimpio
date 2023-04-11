@@ -1,188 +1,272 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ProyectoAula_daniel_isabella
+namespace ProyectoCL
 {
-    class Paciente
+    public class Persona
     {
-        private int Identificación;
-        private string Nombre;
-        private string Apellido;
-        private DateTime Nacimiento;
-        private int Tipo_regimen;
-        private int semanas_cotizadas;
-        private DateTime Ingreso_sistema_salud;
-        private DateTime Ingreso_Eps;
-        private int Eps;
-        private string Historia_clinica;
-        private int Cantidad_enfermedades;
-        private string Enfermedad_mas_relevante;
-        private int Tipo_afiliacion;
-        private int costos_tratamientos;
-
-        public Paciente(int identificación, string nombre, string apellido, DateTime nacimiento, int tipo_regimen, int semanas_cotizadas, DateTime ingreso_sistema_salud, DateTime ingreso_Eps, int eps, string historia_clinica, int cantidad_enfermedades, string enfermedad_mas_relevante, int tipo_afiliacion, int costos_tratamientos)
+        public Persona(string nombres, string apellidos, DateTime fechaNacimiento, int identificacion)
         {
-            Identificación1 = identificación;
-            Nombre1 = nombre;
-            Apellido1 = apellido;
-            Nacimiento1 = nacimiento;
-            Tipo_regimen1 = tipo_regimen;
-            this.Semanas_cotizadas = semanas_cotizadas;
-            Ingreso_sistema_salud1 = ingreso_sistema_salud;
-            Ingreso_Eps1 = ingreso_Eps;
-            Eps1 = eps;
-            Historia_clinica1 = historia_clinica;
-            Cantidad_enfermedades1 = cantidad_enfermedades;
-            Enfermedad_mas_relevante1 = enfermedad_mas_relevante;
-            Tipo_afiliacion1 = tipo_afiliacion;
-            this.Costos_tratamientos = costos_tratamientos;
+            Nombres = nombres;
+            Apellidos = apellidos;
+            FechaNacimiento = fechaNacimiento;
+            Id = identificacion;
+
         }
 
-        public int Identificación1 
+        public int Id
         {
-            get { 
-                return Identificación; 
-            }
-            set { 
-                Identificación = value; 
-            }
-        }
-        public string Nombre1 
-        {
-            get {
-                return Nombre;
-            }
-            set { 
-                Nombre = value; 
-            } 
-        }
-        public string Apellido1 
-        {
-            get 
-            { 
-                return Apellido; 
-            }
-            set 
-            { 
-                Apellido = value; 
-            } 
-        }
-        public DateTime Nacimiento1 
-        {
-            get 
-            { 
-                return Nacimiento; 
-            }
-            set 
-            { 
-                Nacimiento = value; 
-            }
-        }
-        public int Tipo_regimen1 
-        {
-            get 
-            {
-                return Tipo_regimen; 
-            }
-            set 
-            { 
-                Tipo_regimen = value; 
-            }
-        }
-        public int Semanas_cotizadas 
-        { 
             get
             {
-                return semanas_cotizadas;
+                return _id;
             }
             set
             {
-                semanas_cotizadas = value;
-            } 
+                _id = value;
+            }
         }
-        public DateTime Ingreso_sistema_salud1 
-        { 
+        public string Nombres
+        {
             get
             {
-                return Ingreso_sistema_salud;
+                return _nombres;
             }
             set
             {
-                Ingreso_sistema_salud = value;
-            } 
+                _nombres = value;
+            }
         }
-        public DateTime Ingreso_Eps1 
-        { 
+        public string Apellidos
+        {
             get
             {
-                return Ingreso_Eps;
+                return _apellidos;
             }
             set
             {
-                Ingreso_Eps = value;
-            } 
+                _apellidos = value;
+            }
         }
-        public int Eps1 
-        { 
+        public DateTime FechaNacimiento
+        {
             get
             {
-                return Eps;
+                return _fechaNacimiento;
             }
             set
             {
-                Eps = value;
-            } 
+                _fechaNacimiento = value;
+            }
         }
-        public string Historia_clinica1
-        { 
-            get
-            {
-                return Historia_clinica;
-            }
-            set
-            {
-                Historia_clinica = value;
-            } 
-        }
-        public int Cantidad_enfermedades1 { get
-            {
-                return Cantidad_enfermedades;
-            }
-            set
-            {
-                Cantidad_enfermedades = value;
-            } }
-        public string Enfermedad_mas_relevante1 { get
-            {
-                return Enfermedad_mas_relevante;
-            }
-            set
-            {
-                Enfermedad_mas_relevante = value;
-            } }
-        public int Tipo_afiliacion1 { get
-            {
-                return Tipo_afiliacion;
-            }
-            set
-            {
-                Tipo_afiliacion = value;
-            } }
-        public int Costos_tratamientos { get
-            {
-                return costos_tratamientos;
-            }
-            set
-            {
-                costos_tratamientos = value;
-            } }
+
+        private int _id;
+        private string _nombres;
+        private string _apellidos;
+        private DateTime _fechaNacimiento;
     }
+
+    public class Afiliacion
+    {
+        public Afiliacion(int tipoRegimen, int semanasCotizadas, int tipoAfiliacion)
+        {
+            TipoRegimen = tipoRegimen;
+            SemanasCotizadas = semanasCotizadas;
+            TipoAfiliacion = tipoAfiliacion;
+        }
+        public int TipoRegimen
+        {
+            get
+            {
+                return _tipoRegimen;
+            }
+            set
+            {
+                _tipoRegimen = value;
+            }
+        }
+        public int SemanasCotizadas
+        {
+            get
+            {
+                return _semanasCotizadas;
+            }
+            set
+            {
+                _semanasCotizadas = value;
+            }
+        }
+        public int TipoAfiliacion
+        {
+            get
+            {
+                return _tipoAfiliacion;
+            }
+            set
+            {
+                _tipoAfiliacion = value;
+            }
+        }
+
+        private int _tipoRegimen;
+        private int _semanasCotizadas;
+        private int _tipoAfiliacion;
+    }
+
+    public class EPS
+    {
+        public EPS(DateTime fechaIngresoSistemaSalud, DateTime fechaIngresoEPS, int nombreEPS)
+        {
+            FechaIngresoSistemaSalud = fechaIngresoSistemaSalud;
+            FechaIngresoEPS = fechaIngresoEPS;
+            NombreEPS = nombreEPS;
+        }
+        public DateTime FechaIngresoSistemaSalud
+        {
+            get
+            {
+                return _fechaIngresoSistemaSalud;
+            }
+            set
+            {
+                _fechaIngresoSistemaSalud = value;
+            }
+        }
+        public DateTime FechaIngresoEPS
+        {
+            get
+            {
+                return _fechaIngresoEPS;
+            }
+
+            set
+            {
+                _fechaIngresoEPS = value;
+            }
+        }
+        public int NombreEPS
+        {
+            get
+            {
+                return _nombreEPS;
+            }
+            set
+            {
+                _nombreEPS = value;
+            }
+        }
+
+        private int _nombreEPS;
+        private DateTime _fechaIngresoEPS;
+        private DateTime _fechaIngresoSistemaSalud;
+
+    }
+
+    public class HistoriaClinica
+    {
+        public HistoriaClinica(int cantidadEnfermedades, string enfermedadMasRelevante, string historiaclinica)
+        {
+            CantidadEnfermedades = cantidadEnfermedades;
+            EnfermedadMasRelevante = enfermedadMasRelevante;
+            Historiaclinica = historiaclinica;
+        }
+        public string Historiaclinica
+        {
+            get
+            {
+                return _historiaclinica;
+            }
+            set
+            {
+                _historiaclinica = value;
+            }
+        }
+        public int CantidadEnfermedades
+        {
+            get
+            {
+                return _cantidadEnfermedades;
+            }
+            set
+            {
+                _cantidadEnfermedades = value;
+            }
+        }
+        public string EnfermedadMasRelevante
+        {
+            get
+            {
+                return _enfermedadMasRelevante;
+            }
+            set
+            {
+                _enfermedadMasRelevante = value;
+            }
+        }
+        private string _historiaclinica;
+        private int _cantidadEnfermedades;
+        private string _enfermedadMasRelevante;
+
+    }
+
+    public class CostosTratamientos
+    {
+        public CostosTratamientos(double costosAsociados)
+        {
+            CostosAsociados = costosAsociados;
+        }
+
+        public double CostosAsociados
+        {
+            get
+            {
+                return _CostosAsociados;
+            }
+            set
+            {
+                _CostosAsociados = value;
+            }
+
+        }
+        private double _CostosAsociados;
+    }
+
+
+
+    public class CambioRegimen
+    {
+        public void CambiarTipoRegimen(Afiliacion _tipoRegimen, int nuevoTipoRegimen)
+        {
+            _tipoRegimen.TipoRegimen = nuevoTipoRegimen;
+        }
+    }
+
+
+
+    public class ActualizacionHistoriaClinica
+    {
+        public void ActualizarHistoriaClinica(HistoriaClinica persona, int nuevaCantidadEnfermedades, string nuevaEnfermedadMasRelevante)
+        {
+            persona.CantidadEnfermedades = nuevaCantidadEnfermedades;
+            persona.EnfermedadMasRelevante = nuevaEnfermedadMasRelevante;
+        }
+    }
+
+    public class ActualizacionCostosTratamientos
+    {
+        public void ActualizarCostosTratamientos(CostosTratamientos _costos, double nuevosCostosAsociados)
+        {
+            _costos.CostosAsociados = nuevosCostosAsociados;
+        }
+    }
+
+    public class ActualizacionEnfermedadMasRelevante
+    {
+        public void ActualizarEnfermedadMasRelevante( HistoriaClinica _relevante, string nuevaEnfermedadMasRelevante)
+        {
+            _relevante.EnfermedadMasRelevante = nuevaEnfermedadMasRelevante;
+        }
+    }
+
 }
 
 
-        
-        
+
